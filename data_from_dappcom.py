@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
 import json
-import emoji
 
 def get_info():
     web_req = requests.get('https://www.dapp.com/app/rubic')
@@ -17,17 +16,3 @@ def get_info():
     return str
 
 #print(get_info())
-
-def get_price():
-    response = requests.get('https://api.etherscan.io/api?module=gastracker&action=gasoracle')  # Get-запрос
-    json_data = json.loads(response.text)  # Извлекаем JSON
-    propose_gas_price = str('Gas (' + json_data['result']['ProposeGasPrice'] + ' Gwei)')
-    status_price = emoji.emojize(':high_voltage:'+json_data['result']['FastGasPrice']+' | :turtle:'+json_data['result']['SafeGasPrice'])
-    return propose_gas_price, status_price
-
-def get_liq():
-    web_req = requests.get('https://www.dextools.io/app/uniswap/pair-explorer/0x10db37f4d9b3bc32ae8303b46e6166f7e9652d28')
-    content = BeautifulSoup(web_req.text, 'html.parser')
-    assets = content.find_all('ul')
-
-#print(get_liq())
