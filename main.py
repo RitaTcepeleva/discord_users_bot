@@ -35,20 +35,21 @@ async def fox(ctx):
 
 @bot.command()
 async def info(ctx):
-    channel = bot.get_channel(765937827295789098)
+    channel = bot.get_channel(ctx.channel.id)
     embed = discord.Embed(color = 0xff9900, title = 'Rubic', url='https://www.dapp.com/app/rubic',
                           description=get_info()) # Создание Embed'a
     embed.set_thumbnail(
         url="https://assets.coingecko.com/coins/images/12629/large/rubic.jpg?1601297271"
     )
     await ctx.send(embed = embed) # Отправляем Embed
-    message = await channel.history().find(lambda m: m.author.id == 781803547665629205)
+    message = await channel.history().find(lambda m: m.author.id == 769117103776727050)
     while True:
         newEmbed = discord.Embed(color = 0xff9900, title = 'Rubic', url='https://www.dapp.com/app/rubic', description=get_info())
         newEmbed.set_thumbnail(url="https://assets.coingecko.com/coins/images/12629/large/rubic.jpg?1601297271")
         await message.edit(embed=newEmbed, content='')
         await asyncio.sleep(10)
-        await message.edit(content=get_info(), embed=newEmbed)
+        await message.edit(content='', embed=newEmbed)
+        await asyncio.sleep(10)
 
 #mytask.start()
 

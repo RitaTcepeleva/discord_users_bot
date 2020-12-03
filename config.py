@@ -1,6 +1,6 @@
 settings = {
     'token': '',
     'bot': 'Discord Test Bot',
-    'id': 781803547665629205,
+    'id': 769117103776727050,
     'prefix': '!'
 }
